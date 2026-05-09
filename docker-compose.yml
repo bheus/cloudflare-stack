@@ -1,0 +1,9 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run brendan-website
+    volumes:
+      - /etc/cloudflared:/etc/cloudflared:ro
+    network_mode: host
