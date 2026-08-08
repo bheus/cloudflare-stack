@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "docker-compose"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    commit-message:
+      prefix: "deps"
+    # NOTE: cloudflared versions are calendar-style (2026.7.3), so a "major" bump is
+    # just the year rolling over. Do NOT ignore majors here — that would freeze this
+    # image on 2026.x forever. Cloudflare deprecates old connector versions.
